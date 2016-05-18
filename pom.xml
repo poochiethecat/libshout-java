@@ -11,7 +11,7 @@
     <platform.jdk.include.dir>${java.home}/include</platform.jdk.include.dir>
     <platform.javahOS>darwin</platform.javahOS>
     <platform.define>__DARWIN__</platform.define>
-    <platform.shlib>dylib</platform.shlib>
+    <platform.shlib>so</platform.shlib>
     <platform.jni>jnilib</platform.jni>
   </properties>
 

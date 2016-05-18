@@ -1,6 +1,7 @@
 /.settings
 /.project
 /.classpath
+/target
 /target/classes
 /target/maven-archiver
 /target/native
@@ -8,3 +9,4 @@
 /target/surefire
 /target/surefire-reports
 /target/test-classes
+.#*
