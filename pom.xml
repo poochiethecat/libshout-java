@@ -7,33 +7,13 @@
   <description>Java libshout binding</description>
 
   <properties>
-    <platform>osx</platform>
+    <platform>win32</platform>
     <platform.jdk.include.dir>${java.home}/include</platform.jdk.include.dir>
-    <platform.javahOS>darwin</platform.javahOS>
-    <platform.define>__DARWIN__</platform.define>
-    <platform.shlib>so</platform.shlib>
+    <platform.javahOS>win32</platform.javahOS>
+    <platform.define>__WIN32__</platform.define>
+    <platform.shlib>dll</platform.shlib>
     <platform.jni>jnilib</platform.jni>
   </properties>
-  <distributionManagement>
-    <site>
-      <id>vr-maven-repo</id>
-      <url>s3://vr-maven-repo/site</url>
-    </site>
-    <snapshotRepository>
-      <id>vr-maven-repo</id>
-      <url>s3://vr-maven-repo/snapshot</url>
-    </snapshotRepository>
-    <repository>
-      <id>vr-maven-repo</id>
-      <url>s3://vr-maven-repo/release</url>
-    </repository>
-  </distributionManagement>
-  <repositories>
-    <repository>
-      <id>vr-maven-repo</id>
-      <url>s3://vr-maven-repo/release</url>
-    </repository>
-  </repositories>
 
   <dependencies>
     <dependency>
@@ -45,13 +25,6 @@
   </dependencies>
 
   <build>
-    <extensions>
-      <extension>
-        <groupId>org.kuali.maven.wagons</groupId>
-        <artifactId>maven-s3-wagon</artifactId>
-        <version>1.2.1</version>
-      </extension>
-    </extensions>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
