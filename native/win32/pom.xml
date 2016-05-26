@@ -1,0 +1,82 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.gmail.kunicins.olegs</groupId>
+    <artifactId>nativeParent</artifactId>
+    <version>2.2.2</version>
+  </parent>
+
+  <groupId>com.gmail.kunicins.olegs</groupId>
+  <artifactId>libshout-java-native</artifactId>
+  <version>2.2.2</version>
+  <name>libshout-java native win32</name>
+
+  <packaging>dll</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.gmail.kunicins.olegs</groupId>
+      <artifactId>libshout-java-java</artifactId>
+      <version>2.2.2</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>native-maven-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <!--  trigger javah -->
+          <javahOS>win32</javahOS>
+
+          <compilerProvider>generic-classic</compilerProvider>
+          <compilerExecutable>gcc</compilerExecutable>
+          <compilerStartOptions>
+            <compilerStartOption>-fpic</compilerStartOption>
+            <compilerStartOption>-Wall</compilerStartOption>
+          </compilerStartOptions>
+          <linkerOutputDirectory>target</linkerOutputDirectory>
+          <linkerExecutable>gcc</linkerExecutable>
+          <sources>
+            <source>
+              <directory>../src/main/native</directory>
+              <fileNames>
+                <fileName>libshout.c</fileName>
+              </fileNames>
+            </source>
+          </sources>
+          <linkerStartOptions>
+            <linkerStartOption>-shared</linkerStartOption>
+            <linkerStartOption>-lshout</linkerStartOption>
+          </linkerStartOptions>
+          <linkerEndOptions>
+            <linkerEndOption>-o ${project.build.directory}/libshout.dll</linkerEndOption>
+          </linkerEndOptions>
+        </configuration>
+        <executions>
+          <execution>
+            <id>javah</id>
+            <phase>generate-sources</phase>
+            <configuration>
+              <javahOS>win32</javahOS>
+              <javahProvider>default</javahProvider>
+              <javahOutputDirectory>${project.build.directory}/custom-javah</javahOutputDirectory>
+              <workingDirectory>${basedir}</workingDirectory>
+              <javahOutputFileName>libshout.h</javahOutputFileName>
+              <javahClassNames>
+                <javahClassName>com.gmail.kunicins.olegs.libshout.Libshout</javahClassName>
+              </javahClassNames>
+            </configuration>
+            <goals>
+              <goal>javah</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
